@@ -1,0 +1,101 @@
+.door {
+  background-color:#333;
+  position:absolute;
+  z-index:1;
+  width:20px;
+  height:20px;
+}
+
+.door.entered {
+  background-color:#6F6;
+}
+
+.door.tried {
+  background-color:#F66;
+}
+
+#nextstep, #run, #stop, #count {
+  float:left;
+  margin:5px;
+  width:100px;
+  height:20px;
+  background-color:#333;
+  color:#eee;
+  text-align:center;
+  cursor:pointer;
+}
+
+
+
+#maze {
+  position:absolute;
+  width:640px;
+  height:480px;
+  margin-left:40px;
+  margin-top:40px;
+}
+
+#room_nw {
+  background-color:#ccc;
+  position:absolute;
+  width:320px;
+  height:240px;
+  top:0;
+  left:0;
+}
+
+#door_nw_n { top:-10px; left:150px; }
+#door_nw_se { bottom:-10px; right:40px; }
+#door_nw_sw { bottom:-10px; left:100px; }
+#door_nw_w { top:110px; left:-10px; }
+
+#room_ne {
+  background-color:#aaa;
+  position:absolute;
+  width:320px;
+  height:240px;
+  top:0;
+  right:0;
+}
+
+#door_ne_n { top:-10px; right:150px; }
+#door_ne_e { top:110px; right:-10px; }
+#door_ne_se { bottom:-10px; right:100px; }
+#door_ne_sw { bottom:-10px; left:40px; }
+
+#room_se {
+  background-color:#666;
+  position:absolute;
+  width:220px;
+  height:240px;
+  bottom:0;
+  right:0;
+}
+
+#door_se_e { right:-10px; top:110px; }
+#door_se_s { right:100px; bottom:-10px; }
+#door_se_w { left:-10px; top:110px; }
+
+#room_s {
+  background-color:#999;
+  position:absolute;
+  width:200px;
+  height:240px;
+  left:220px;
+  bottom:0;
+}
+
+#door_s_s { left:90px; bottom:-10px; }
+
+#room_sw {
+  background-color:#333;
+  position:absolute;
+  width:220px;
+  height:240px;
+  bottom:0;
+  left:0;
+}
+
+#door_sw_e { top:110px; right:-10px; }
+#door_sw_s { bottom:-10px; right:100px; }
+#door_sw_w { top:110px; left:-10px; }
