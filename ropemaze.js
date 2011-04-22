@@ -13,15 +13,16 @@ $(function() {
     },
     'room_nw':{
       'door_nw_n':{to:{room:'outside',door:'door_out_nw'},display:$('#door_nw_n')},
-      'door_nw_se':{to:{room:'room_s',door:'door_s_nw'},display:$('#door_nw_se')},
-      'door_nw_sw':{to:{room:'room_sw',door:'door_sw_n'},display:$('#door_nw_sw')},
+      'door_nw_e':{to:{room:'room_ne',door:'door_ne_w'},display:$('#door_nw_e')},
+      'door_nw_s':{to:{room:'room_sw',door:'door_sw_n'},display:$('#door_nw_s')},
       'door_nw_w':{to:{room:'outside',door:'door_out_wn'},display:$('#door_nw_w')}
     },
     'room_ne':{
       'door_ne_n':{to:{room:'outside',door:'door_out_ne'},display:$('#door_ne_n')},
       'door_ne_e':{to:{room:'outside',door:'door_out_en'},display:$('#door_ne_e')},
       'door_ne_se':{to:{room:'room_se',door:'door_se_n'},display:$('#door_ne_se')},
-      'door_ne_sw':{to:{room:'room_s',door:'door_s_ne'},display:$('#door_ne_sw')}
+      'door_ne_sw':{to:{room:'room_s',door:'door_s_ne'},display:$('#door_ne_sw')},
+      'door_ne_w':{to:{room:'room_nw',door:'door_nw_e'},display:$('#door_nw_e')}
     },
     'room_se':{
       'door_se_n':{to:{room:'room_ne',door:'door_ne_se'},display:$('#door_ne_se')},
@@ -30,14 +31,13 @@ $(function() {
       'door_se_w':{to:{room:'room_s',door:'door_s_e'},display:$('#door_se_w')}
     },
     'room_s':{
-      'door_s_nw':{to:{room:'room_nw',door:'door_nw_se'},display:$('#door_nw_se')},
-      'door_s_ne':{to:{room:'room_ne',door:'door_ne_sw'},display:$('#door_ne_sw')},
+      'door_s_n':{to:{room:'room_ne',door:'door_ne_sw'},display:$('#door_ne_sw')},
       'door_s_e':{to:{room:'room_se',door:'door_se_w'},display:$('#door_se_w')},
       'door_s_s':{to:{room:'outside',door:'door_out_s'},display:$('#door_s_s')},
       'door_s_w':{to:{room:'room_sw',door:'door_sw_e'},display:$('#door_sw_e')}
     },
     'room_sw':{
-      'door_sw_n':{to:{room:'room_nw',door:'door_nw_sw'},display:$('#door_nw_sw')},
+      'door_sw_n':{to:{room:'room_nw',door:'door_nw_sw'},display:$('#door_nw_s')},
       'door_sw_e':{to:{room:'room_s', door:'door_s_w'},display:$('#door_sw_e')},
       'door_sw_s':{to:{room:'outside',door:'door_out_sw'},display:$('#door_sw_s')},
       'door_sw_w':{to:{room:'outside',door:'door_out_ws'},display:$('#door_sw_w')}
@@ -45,6 +45,7 @@ $(function() {
   };
 
   var count = $("#count");
+  var tries = $("#tries");
   var crosses = {};
   
   // Get an indexed array of all the doors.
@@ -84,7 +85,7 @@ $(function() {
   rooms[0] = {
     fromDoor:'',
     toDoor:'',
-    room:'room_ne',
+    room:'outside',
     tried:{}
   };
 
@@ -133,6 +134,7 @@ $(function() {
   }
 
   var step = 0;
+  var numTries = 0;
   var running = false;
 
   // Step our maze forward one step.
@@ -146,6 +148,7 @@ $(function() {
       rooms[step].door = door;
       rooms[step].fromDoor = door.to.door;
       rooms[step].room = door.to.room;
+      tries.text(++numTries);
     }
     else {
       // Step back and try again...
